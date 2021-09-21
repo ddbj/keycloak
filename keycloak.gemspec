@@ -6,12 +6,12 @@ require "keycloak/version"
 Gem::Specification.new do |spec|
   spec.name          = "keycloak"
   spec.version       = Keycloak::VERSION
-  spec.authors       = ["Guilherme Portugues"]
-  spec.email         = ["g_portugues@hotmail.com"]
+  spec.authors       = ["Tsutomu Watanabe"]
+  spec.email         = ["watanabe162@gmail.com"]
 
   spec.summary       = %q{Add authentication to applications and secure services with Keycloak}
   #spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/imagov/keycloak.git"
+  spec.homepage      = "https://github.com/ddbj/keycloak.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

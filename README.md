@@ -15,7 +15,7 @@ Exemple: https://github.com/imagov/example-gem-keycloak
 Add this line in your application's <b>gemfile</b>:
 
 ```ruby
-gem 'keycloak'
+gem 'keycloak', :git => 'https://github.com/ddbj/keycloak'
 ```
 
 Install the gem by running:
@@ -23,13 +23,46 @@ Install the gem by running:
     $ bundle install
 
 Or install it yourself:
+初めにspecific_install gemのInstall
 
-    $ gem install keycloak
+    $ gem install specific_install
+
+リポジトリからgem install
+
+    $ gem specific_install git@github.com:ddbj/keycloak.git
+
 	
 To add the configuration file:
 
 	$ rails generate keycloak:config
 
+設定ファイルはconfig/keycloak.rb になる
+
+    # Set proxy to connect in keycloak server
+    Keycloak.proxy = ''
+    # If true, then all request exception will explode in application (this is the default value)
+    Keycloak.generate_request_exception = true
+    # controller that manage the user session
+    Keycloak.keycloak_controller = 'session'
+    # realm name (installation fileが無い場合)
+    # Keycloak管理画面におけるRealmの名称
+    Keycloak.realm = 'demo'
+    # realm url (installation fileが無い場合)
+    Keycloak.auth_server_url = 'http://localhost:8080/auth'
+    # The introspect of the token will be executed every time the Keycloak::Client.has_role? method is invoked, if this setting is set to true.
+    Keycloak.validate_token_when_call_has_role = false 
+    # secret (instllation fileが無い場合)
+    # Keycloak管理画面における Clients -> Credentials -> Secret を設定
+    Keycloak.secret = ''
+    # resource (installation fileが無い場合)
+    # Keycloak管理画面におけるClients -> Client ID 
+    Keycloak.resource = 'sample_application'
+
+installation file とはKeycloak管理画面において Clients -> CLient ID選択 -> Installation
+タブを選択しFormat Option をKeycloak OIDC JSONに設定しDownload したファイルを指します。
+このファイルをconfig以下に置く。
+
+例) config/keycloak.json
 	
 ## Use
 
